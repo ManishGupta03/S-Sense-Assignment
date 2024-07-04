@@ -54,6 +54,10 @@ const getCroppedImg = async (imageSrc: File, crop: Area): Promise<string> => {
 
 interface ProfilePageProps {
   setActivePage: (page: string) => void;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
 }
 
 const ProfilePage: React.FC<ProfilePageProps> = ({ setActivePage }) => {
