@@ -132,6 +132,13 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ setActivePage }) => {
  useEffect(()=>{
 
  },[])
+
+ const handleCheckboxChange = (key: keyof typeof toggleCheckboxes) => {
+  setToggleCheckboxes((prev) => ({
+    ...prev,
+    [key]: !prev[key],
+  }));
+};
   return (
     <div className="flex flex-col min-h-screen w-[98vw] max-w-full p-5 bg-inherit font-sans bg-white">
       <div className="mb-[20px] bg-[#007aff] text-white border-none px-5 py-2.5 rounded-lg cursor-pointer shadow-md transition-colors duration-300 hover:bg-[#005bb5] mt-[30px] w-[160px]">
@@ -228,7 +235,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ setActivePage }) => {
                   <label key={key} className='block mb-[4px] relative'>
                     <input type="checkbox" id={key} checked={value} 
                     className={'appearance-none w-[50px] h-[30px] rounded-2xl  cursor-pointer outline-none'}  style={{backgroundColor:value?"blue":"gray"}}
-                    onChange={() => setToggleCheckboxes((prev) =>  {  console.log(key); return {  ...prev, [key]:!prev[key] }})}
+                    onChange={() => handleCheckboxChange(key as keyof typeof toggleCheckboxes)}
                     />
                     
                     <div
@@ -249,3 +256,4 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ setActivePage }) => {
 export default ProfilePage;
 // transition duration-300 ease-in-out checked:bg-blue-500 checked:translate-x-full checked:shadow-outline 
 //  ${value ? 'bg-blue-500' : 'bg-gray-300' }`}
+// () => setToggleCheckboxes((prev) =>  {  console.log(key); return {  ...prev, [key]:!prev[key] }})
